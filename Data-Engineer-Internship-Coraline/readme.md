@@ -34,11 +34,14 @@ For submit Coraline internship assignment ( Data Engineer )
 นำผลลัพธ์ที่ได้จาก DataFrame ที่ได้จาก script มาเทียบกับ DataFrame ที่กำหนดมาใน assignment
 
 - DataFrame ที่ assignment ต้องการ
+  
   ![Alt text](./image/image-2.png)
-- DataFrame ที่มาจาก script
+  
+- DataFrame ที่มาจาก script (ตัดมาแค่บางส่วนเพื่่อดูโครงสร้างของ DataFrame)
+
   ![Alt text](./image/image-3.png)
 
-DataFrame ที่ได้มีโครงสร้างเหมือนกัน และสามารถทำงานได้อย่างถูกต้อง
+DataFrame ที่ได้มีโครงสร้างเหมือนกัน และสามารถทำงานได้อย่างถูกต้อง 
 
 ## What I've learned
 
