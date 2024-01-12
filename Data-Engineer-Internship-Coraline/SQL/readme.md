@@ -36,7 +36,8 @@
 
 ผลลัพธ์ที่ได้จาก query
 
-![Alt text](../image/image-6.png)
+![image](https://github.com/Zhuuuun/Coraline-internship-DE/assets/96523298/eedc2097-7718-4162-8b94-1695ca5fb779)
+
 
 ### 4. เปลี่ยนประเภทข้อมูล gen_title จาก char (20) เป็น integer โดยเรียงตามตัวอักษร เช่น action แปลงเป็น 1, animation แปลงเป็น 2, biography แปลงเป็น 3, ...
 1. ผลเลือกใช้วิธีการสร้าง column ใหม่แล้วค่อยใส่ value ลงไปจากนั้นค่อยลบ column เก่าทิ้งแล้วทำการเปลี่ยนชื่อ column ใหม่
