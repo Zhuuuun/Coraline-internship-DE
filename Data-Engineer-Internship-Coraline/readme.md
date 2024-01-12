@@ -2,6 +2,8 @@
 
 For submit Coraline internship assignment ( Data Engineer )
 
+*All of these codes are dedicated to Coraline Co., Ltd*
+
 ## Project Structure
 
 ![project-structure](./image/image-1.png)
