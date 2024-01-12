@@ -4,7 +4,7 @@ WITH actor_director_counts AS (
         mbv.dir_id,
         mbv.act_id,
         COUNT(*) AS collaboration_time,
-		ROW_NUMBER() OVER (PARTITION BY mbv.dir_id ORDER BY COUNT(*) DESC) AS rn
+	ROW_NUMBER() OVER (PARTITION BY mbv.dir_id ORDER BY COUNT(*) DESC) AS rn
     FROM movie_base_view AS mbv
     GROUP BY mbv.dir_id, mbv.act_id
 )
