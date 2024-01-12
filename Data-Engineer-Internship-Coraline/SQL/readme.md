@@ -1,7 +1,7 @@
 # SQL Assignment
 ## Requirement
 - ใน SQL script ได้มีการใช้งาน window function ดังนั้นจึงต้องรันบน engine ที่รองรับ window function
-- script ถูกเขียนด้วย syntax ของ MySQL ดังนั้นจึงต้องใช้ compiler ที่สามารถอ่าน syntax แบบ MySQL ได้
+- script ถูกเขียนด้วย MySQL ดังนั้นจึงต้องใช้ compiler ที่สามารถอ่าน syntax แบบ MySQL ได้
 - ตัว script ในข้อ 4 มีการคำสั่ง update ที่ทำการ update ทั้ง column โดยไม่มีเงื่อนไข where จึงจำเป็นที่จะต้องปิดใช้งาน soft update ก่อนจึงจะสามารถทำงานได้
 ## How to execute program
 1. สร้าง view ***movie_base_query*** จาก file **movie_base_query.sql** 
@@ -52,31 +52,3 @@
 1. ใช้ Regex(Regular expression) ในการจับชื่อตาม pattern ที่โจทย์กำหนดให้ โดย parameter 'i' ที่ส่งเข้าไปใน function **regexp_like()** เพื่อเปิดการหา pattern แบบ case-insensitive 
 2. ใส่เงื่อนไข where เพื่อข้ามนักแสดงที่มีเงื่อนไขตามชื่อแต่เป็นเพศหญิงอยู่แล้ว จะได้ไม่ต้องทำการ update ซ้ำเมื่อนักแสดงเป็นเพศหญิงอยู่แล้ว
 
-## Appendix
-ในข้อ 1 ผมได้คิด approach ออกมา 2 ทางนั่นคือ
-1. ใช้ CTE ตามที่ใส่ไปในไฟล์ ซึงอ่านเข้าใจยากกว่า ***SQL-Question1*** 
-2. ใช้ group by ธรรมดาซึ่งอ่านเข้าใจง่ายกว่า
-
-แต่เหตุผลที่ผมเลือกใช้วิธีแรกคือ performance ของ qurey เนื่องจากการใช้ group by กับ subquery แบบที่แสดงด้านล่างจะทำให้เกิด Correlated(ใช้ตัวแปรจากนอก subquery ใน subquery) ทำให้ performance อาจจะลดลงอย่างมีนัยสำคัญได้หากข้อมูลมีขนาดใหญ่ขึ้น
-```
-SELECT
-    d.dir_fname AS first_name,
-    d.dir_lname AS last_name,
-    g.gen_title AS genres_title,
-    MAX(r.rev_stars) AS highest_rating
-FROM
-    movie_genres mg
-    INNER JOIN genres g ON mg.gen_id = g.gen_id
-    INNER JOIN movie_direction md ON mg.mov_id = md.mov_id
-    INNER JOIN director d ON md.dir_id = d.dir_id
-    INNER JOIN rating r ON md.mov_id = r.mov_id
-WHERE
-    r.rev_stars = (
-        SELECT MAX(rev_stars)
-        FROM rating r2
-        WHERE r2.mov_id = r.mov_id
-    )
-GROUP BY
-    g.gen_title, d.dir_fname, d.dir_lname;
-
-```
