@@ -4,11 +4,9 @@ WITH actor_director_counts AS (
         mbv.dir_id,
         mbv.act_id,
         COUNT(*) AS collaboration_time,
-        ROW_NUMBER() OVER (PARTITION BY mbv.dir_id, mbv.act_id ORDER BY COUNT(*) DESC) AS rn
-    FROM 
-        movie_base_view AS mbv
-    GROUP BY 
-        mbv.dir_id, mbv.act_id
+		ROW_NUMBER() OVER (PARTITION BY mbv.dir_id ORDER BY COUNT(*) DESC) AS rn
+    FROM movie_base_view AS mbv
+    GROUP BY mbv.dir_id, mbv.act_id
 )
 
 SELECT 
@@ -17,7 +15,8 @@ SELECT
     d.dir_lname AS director_lastname,
     a.act_fname AS actress_firstname,
     a.act_lname AS actress_lastname,
-    adc.collaboration_time 
+    adc.collaboration_time,
+    adc.rn AS ranking
 FROM actor_director_counts AS adc
 JOIN actor AS a ON adc.act_id = a.act_id
 JOIN director AS d ON adc.dir_id = d.dir_id
