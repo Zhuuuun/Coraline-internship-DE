@@ -18,14 +18,16 @@
 3. จากนั้น select เฉพาะ director ที่มี ranking อันดับ 1 
 
 ผลลัพธ์ที่ได้จาก query 
-> ![Alt text](/image/image-7.png)
+
+![Alt text](../image/image-7.png)
 
 ### 2. แสดงข้อมูล นักแสดงแต่ละคนแสดงหนังแต่ละเรื่องรวมเป็นระยะเวลาเท่าใด โดยคิดเฉพาะหนังที่คะแนนความนิยมไม่ใช่ null
 1. ทำการ group by ด้วย actor แล้ว join ***movie_base_query*** เพื่อดึงข้อมูลจาก table ***actor*** (การ group by จะเอา unique combination ระหว่าง column ที่ทำการ group by)
 2. ใส่เงื่อนไข where เพื่อเลือกมาเฉพาะแถวที่ **rev_stars** ไม่ใช่ null ตามที่โจทย์กำหนด
 
 ผลลัพธ์ที่ได้จาก query
-> ![Alt text](/image/image-4.png)
+
+![Alt text](../image/image-4.png)
 
 ### 3. แสดงข้อมูล จํานวนครั้งที่ ผู้กํากับ (director) และนักแสดงหญิง (actor) เคยร่วมงานกัน โดยแสดงเฉพาะ 5 ลําดับแรกของนักแสดงหญิงที่ร่วมงานกับผู้กํากับคนนั้นบ่อยที่สุด
 1. สร้าง CTE เพื่อใช้จัดลำดับของ director และ actor แต่ละคู่ตามจำนวนครั้งที่ทำงานด้วยกัน
@@ -33,7 +35,8 @@
 3. กำหนดเงื่อนไขใน where เพื่อเลือกเฉพาะแถวที่มี ranking จาก CTE ตั้งแต่อันดับ 1 จนถึงอันดับ 5 และเลือกเฉพาะ actress(นักแสดงหญิง)
 
 ผลลัพธ์ที่ได้จาก query
-> ![Alt text](/image/image-6.png)
+
+![Alt text](../image/image-6.png)
 
 ### 4. เปลี่ยนประเภทข้อมูล gen_title จาก char (20) เป็น integer โดยเรียงตามตัวอักษร เช่น action แปลงเป็น 1, animation แปลงเป็น 2, biography แปลงเป็น 3, ...
 1. ผลเลือกใช้วิธีการสร้าง column ใหม่แล้วค่อยใส่ value ลงไปจากนั้นค่อยลบ column เก่าทิ้งแล้วทำการเปลี่ยนชื่อ column ใหม่
@@ -43,7 +46,7 @@
 
 ผลลัพธ์ที่ได้จาก query
 
-> ![Alt text](/image/image-5.png)
+![Alt text](../image/image-5.png)
 
 ### 5. แก้ไขเพศของนักแสดง ที่ชื่อขึ้นต้นด้วยคําว่า Em, Char หรือ ชื่อลงท้ายด้วยคําว่า dy, sy, lia เป็นเพศหญิง โดยไม่สนใจตัวเล็กตัวใหญ่
 1. ใช้ Regex(Regular expression) ในการจับชื่อตาม pattern ที่โจทย์กำหนดให้ โดย parameter 'i' ที่ส่งเข้าไปใน function **regexp_like()** เพื่อเปิดการหา pattern แบบ case-insensitive 
