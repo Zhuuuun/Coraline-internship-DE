@@ -20,7 +20,7 @@ pip install requests
 - ตั้งชื่อตัวแปร และฟังก์ชันให้สื่อความหมาย
 - design ฟังก์ชันให้เป็นแบบ dynamic สามารถไม่ สามารถเปลี่ยนแปลงค่าได้ง่ายไม่ใส่ค่าเข้าไปในฟังก์ชันตรง ๆ แต่รับเป็น parameter เข้ามาเพื่อเพิ่ม flexibility และทำให้ maintain ต่อได้ง่าย
 
-## Function and Vaiable explanation
+## Function explanation
 ### function
 1. ***get_data()*** เป็นฟังก์ชันสำหรับ fetch ข้อมูลจาก API แล้ว return กลับไปใน JSON format ซึ่งมี parameter ดังนี้
     
@@ -34,6 +34,6 @@ pip install requests
 
     2.1 **num** คือจำนวนของ user ที่ต้องการ random
 
-3. ***generate_prediction*** เป็นฟังก์ชันที่จะส่ง name ที่รับเข้ามาไปยัง API เพื่อทำนายเพศจากชื่อนั้น แล้ว return ค่ากลับมา 2 ค่านั่นคือ **gender(predict)** (เพศที่ predict) และ **probability** (ความน่าจะเป็นที่จะเป็นเพศที่ทำนายมีค่าตั้งแต่ 0-1) ซึ่งฟังก์ชันจะมี parameter ดังนี้
+3. ***generate_prediction*** เป็นฟังก์ชันที่จะส่ง name ที่รับเข้ามาไปยัง API เพื่อทำนายเพศจากชื่อนั้น แล้ว return ค่ากลับมา 2 ค่านั่นคือ **gender(predict)** (เพศที่ predict) และ **probability** (ความน่าจะเป็นที่จะตรงกับเพศที่ทำนาย) ซึ่งฟังก์ชันจะมี parameter ดังนี้
 
     3.1 **name** คือชื่อที่ต้องการทำนายเพศ
